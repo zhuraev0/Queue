@@ -27,11 +27,11 @@ func (receiver *people) Next() interface{} {
 	}
 	return nil
 }
-
+/*
 func (receiver *people) Len() int {
 	return receiver.len()
 }
-
+*/
 func (receiver *people) eQueue(value interface{}) {
 	if receiver.len() == 0 {
 		receiver.first = &OrderQueue{
@@ -46,10 +46,6 @@ func (receiver *people) eQueue(value interface{}) {
 	receiver.length++
 
 	current := receiver.first
-	if current == nil {
-		return
-	}
-
 	for {
 		if current.next != nil {
 			receiver.last = current.next

@@ -36,33 +36,29 @@ func TestOneItem(t *testing.T) {
 		t.Error("first and last elements of one item queue must have same values, got:", list.Next(), ";", list.Prev())
 	}
 }
-
-func Test_queue_with_multiple_element(t *testing.T) {
+func TestMultipleElement(t *testing.T) {
 	list := people{}
-	list.eQueue("1")
-	list.eQueue("Masha")
-	list.eQueue("Sasha")
-	if list.len() != 3 {
-		t.Error("after adding 3 elements size must be 3, got: ", list.len())
+	list.eQueue("Vasya")
+	list.eQueue("Sanya")
+	list.eQueue("Vanya")
+	firstQueue := list.Prev()
+	if firstQueue != "Jack" {
+		t.Error("The first in queue must be == \"Vasya\", got: ", firstQueue)
 	}
-	if list.Prev() != "1" {
-		t.Error("The first in queue != \"1\", got: ", list.Prev())
+	lastQueue := list.Next()
+	if lastQueue != "Vanya" {
+		t.Error("The last in queue must be == \"Vanya\", got: ", lastQueue)
 	}
-	if list.Next() != "Sasha" {
-		t.Error("The last in queue != \"Sasha\", got: ", list.Next())
-	}
-	err := list.Next()
-	if err != nil {
-		t.Error("After add last in queue \"55\", got: ", list.Next())
+	list.eQueue("Petya")
+	if list.Next() != "Petya" {
+		t.Error("After add last in queue \"Petya\", the last must be, got: ", list.Next())
 	}
 	list.deQueue()
-	list.eQueue("Dasha")
-	if list.Prev() == "Dasha" {
-		t.Error("After remove the first element in queue \"Masha\", the first in queue must be \"Dasha\", got: ", list.Prev())
+	if list.Prev() == "Vasya" {
+		t.Error("After remove the first element in queue \"Vasya\", first in queue must be == \"Sanya\", got: ", list.Prev())
 	}
 }
-
-func Test_queue_for_deleting_item(t *testing.T) {
+func TestDeletingItem(t *testing.T) {
 	list := people{}
 	list.eQueue(5)
 	list.deQueue()
