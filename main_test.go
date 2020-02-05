@@ -42,7 +42,7 @@ func TestMultipleElement(t *testing.T) {
 	list.eQueue("Sanya")
 	list.eQueue("Vanya")
 	firstQueue := list.Prev()
-	if firstQueue != "Jack" {
+	if firstQueue != "Vasya" {
 		t.Error("The first in queue must be == \"Vasya\", got: ", firstQueue)
 	}
 	lastQueue := list.Next()
