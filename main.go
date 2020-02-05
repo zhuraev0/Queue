@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 type OrderQueue struct {
 	next, prev *OrderQueue
 	Value      interface{}
@@ -81,14 +79,4 @@ func (receiver *people) deQueue() people {
 }
 func main() {
 
-	t := people{}
-	t.eQueue("Vasya")
-	t.eQueue("Sanya")
-	t.eQueue("Vanya")
-	t.eQueue("Petya")
-
-
-	for i := 0; i <= 4; i++ {
-		fmt.Println(t.deQueue())
-	}
 }
